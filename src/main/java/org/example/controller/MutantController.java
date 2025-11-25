@@ -1,5 +1,9 @@
 package org.example.controller;
 
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.example.dto.DnaRequest;
 import org.example.dto.StatsResponse;
@@ -22,6 +26,11 @@ public class MutantController {
         this.statsService = statsService;
     }
 
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200", description = "The DNA belongs to a mutant", content= { @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class))}),
+            @ApiResponse(responseCode = "403", description = "The DNA belongs to a human", content= { @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid DNA sequence", content= { @Content(mediaType = "application/json")})
+    })
     @PostMapping("/mutant")
     public ResponseEntity isMutant(@Valid @RequestBody DnaRequest dnaRequest) {
 
