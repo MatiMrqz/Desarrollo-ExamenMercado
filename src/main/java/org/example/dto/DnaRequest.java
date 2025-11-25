@@ -1,14 +1,10 @@
 package org.example.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import org.example.validation.ValidDnaSequence;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DnaRequest {
     @NonNull
     @ValidDnaSequence
