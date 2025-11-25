@@ -1,8 +1,10 @@
 package org.example.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class MutantDetector {
     private final int DNA_COMPONENTS_REQUIRED = 4;
     private final int SEQUENCES_REQUIRED = 2;
