@@ -4,7 +4,8 @@ import lombok.*;
 import org.example.validation.ValidDnaSequence;
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class DnaRequest {
     @NonNull
     @ValidDnaSequence

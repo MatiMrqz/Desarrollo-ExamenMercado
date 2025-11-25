@@ -29,7 +29,7 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
 
     // Base de datos H2
-    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.h2database:h2:2.4.240'
 
     // Testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
