@@ -8,10 +8,22 @@ public class MutantDetector {
     private final int SEQUENCES_REQUIRED = 2;
 
     public boolean isMutant(String[] dna){
+        if (dna == null || dna.length == 0) {
+            log.warn("DNA sequence is null or empty");
+            return false;
+        }
         int n = dna.length;
         char[][] matrix = new char[n][n];
         // Convert the DNA array into a 2D matrix
         for (int i = 0; i < n; i++) {
+            if(dna[i] == null){
+                log.warn("DNA sequence is null or empty");
+                return false;
+            }
+            if(!dna[i].matches("[ATCG]+")){
+                log.warn("DNA sequence contains invalid characters: {}", dna[i]);
+                return false;
+            }
             matrix[i] = dna[i].toCharArray();
         }
         int sequencesFound = 0;
@@ -37,7 +49,7 @@ public class MutantDetector {
         return false;
     }
     private int checkLineSequence(char[] line) {
-        for (int i = 0; i < line.length - DNA_COMPONENTS_REQUIRED; i++) {
+        for (int i = 0; i <= line.length - DNA_COMPONENTS_REQUIRED; i++) {
             if (line[i] == line[i + 1] && line[i + 1] == line[i + 2] && line[i + 2] == line[i + 3]) {
                 log.info("Found sequence: {}{}{}{} at index {}", line[i], line[i + 1], line[i + 2], line[i + 3], i);
                 return 1;

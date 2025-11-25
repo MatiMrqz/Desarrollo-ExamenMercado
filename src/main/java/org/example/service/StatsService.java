@@ -14,7 +14,7 @@ public class StatsService {
     public StatsResponse getStats(){
         int mutantCount = dnaRecordRepository.getMutantCount();
         int humanCount = dnaRecordRepository.getHumanCount();
-        double ratio = humanCount == 0 ? 1 : (double) mutantCount / humanCount;
+        double ratio = humanCount == 0 ? (mutantCount==0 ? 0 : Double.POSITIVE_INFINITY ): (double) mutantCount / humanCount;
         return StatsResponse.builder()
                 .count_human_dna(humanCount)
                 .count_mutant_dna(mutantCount)
